@@ -11,7 +11,7 @@ easily build on top of this
 
 *Database:MySql (but you can configure and use any RDBMS based database server)
 
-#Usage
+# Usage
 
 Assuming you are in root directory type 
 
@@ -24,5 +24,5 @@ Then go to frontend side and run  vuejs application ,for this type the following
 ```cd dashboard && npm run serve```
 
 
-##Good Luck 
+## Good Luck 
 
