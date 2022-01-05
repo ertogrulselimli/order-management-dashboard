@@ -1,0 +1,67 @@
+spring:
+  profiles:
+    active: dev
+
+
+alovtech:
+  security:
+    authentication:
+      jwt:
+        base64-secret: base64secretforjwtsigning
+        token-validity-in-seconds: 3600
+        token-validity-in-seconds-for-remember-me: 3600
+    cors:
+      allowed:
+        methods: HEAD,GET,POST
+        origins: http://localhost:9527,https://localhost:9527,http://localhost:9528,https://localhost:9528,http://192.168.0.102:9527
+      exposed-headers: Authorization
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/omsb2b?characterEncoding=utf8
+  jpa:
+    database: mysql
+    open-in-view: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    jndi-name:  jdbc/omsb2bDS
+  jpa:
+     database: mysql
+     open-in-view: false
+     generate-ddl: false
+     hibernate:
+       ddl-auto: update
+     show-sql: false
+     properties:
+       hibernate:
+         dialect: org.hibernate.dialect.MySQL8Dialect
+
+
+
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
